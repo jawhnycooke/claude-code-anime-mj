@@ -430,6 +430,19 @@ neon lights, rain, holographic displays, cybernetic, dystopian cityscape, night 
 
 > **Version Note**: Style modes (`--style cute`, `--style expressive`, `--style scenic`, `--style original`) are only available in **Niji 5**. Niji 6 only supports default or `--style raw`.
 
+### Style Aesthetic Keywords
+
+Since Niji 6 doesn't have style mode parameters, use these keywords in your prompts to achieve similar effects:
+
+| Aesthetic | Keywords to Include |
+|-----------|---------------------|
+| **Cute/Kawaii** | kawaii, adorable, chibi, soft colors, rounded features, whimsical, playful, pastel tones, big sparkling eyes, soft lighting |
+| **Expressive/Dramatic** | dramatic, emotional, detailed linework, intense expression, dynamic pose, bold colors, high contrast, action lines, impact frame |
+| **Scenic/Environmental** | cinematic, detailed background, environmental focus, scenic view, atmospheric, landscape, wide shot, lush environment, golden hour lighting |
+| **Classic/Retro** | classic anime, retro anime, 80s anime, 90s anime, cel-shaded, traditional anime aesthetic, vintage anime |
+
+**Tip**: Niji 6 rewards longer, more descriptive prompts. Instead of relying on style parameters, describe exactly what you want to see.
+
 ### Video Parameters
 
 | Parameter | Description | Example |
@@ -506,14 +519,14 @@ A courier on a futuristic motorcycle racing through neon-lit Neo Tokyo streets a
 A lone warrior in black armor facing a massive demon in a gothic cathedral, Berserk style, Kentaro Miura, dark fantasy, hyper-detailed linework, dramatic chiaroscuro lighting, atmospheric fog --niji 6 --ar 2:3 --s 800
 ```
 
-### Magical Girl (Takeuchi)
+### Magical Girl (Takeuchi) - Cute Aesthetic
 ```
-A magical girl mid-transformation with sparkles and ribbons spiraling around her, Sailor Moon style, Naoko Takeuchi, magical girl, sparkling effects, pastel colors, cosmic background, dynamic pose --niji 6 --ar 9:16 --s 600
+A magical girl mid-transformation with sparkles and ribbons spiraling around her, Sailor Moon style, Naoko Takeuchi, magical girl genre, kawaii, adorable expression, big sparkling eyes, soft pastel colors, pink and lavender color palette, cosmic starry background, dynamic graceful pose, soft glowing lighting, whimsical atmosphere --niji 6 --ar 9:16 --s 600
 ```
 
-### JoJo Style (Araki)
+### JoJo Style (Araki) - Expressive Aesthetic
 ```
-A stylish character in flamboyant clothing striking a dramatic pose with menacing aura, JoJo's Bizarre Adventure style, Hirohiko Araki, fashion-forward, muscular, baroque, intense expression --niji 6 --ar 3:4 --s 700
+A stylish character in flamboyant haute couture clothing striking an exaggerated dramatic pose with menacing aura radiating outward, JoJo's Bizarre Adventure style, Hirohiko Araki, fashion-forward design, muscular physique, baroque ornate details, intense piercing expression, bold high-contrast colors, dynamic action lines, dramatic lighting from below --niji 6 --ar 3:4 --s 700
 ```
 
 ### Horror (Junji Ito)
@@ -526,14 +539,14 @@ A figure encountering an impossible spiral staircase descending into darkness, J
 A sorcerer unleashing cursed energy in an explosive battle pose, Jujutsu Kaisen style, MAPPA studio, modern shonen, dynamic action, dark blue and purple energy effects, intense expression --niji 6 --ar 16:9 --s 600
 ```
 
-### Slice of Life (Kyoto Animation)
+### Slice of Life (Kyoto Animation) - Scenic Aesthetic
 ```
-A high school girl gazing out a classroom window at cherry blossoms, Kyoto Animation style, slice of life, soft afternoon lighting, detailed eyes, peaceful atmosphere, beautiful background --niji 6 --ar 16:9 --s 400
+A high school girl in summer uniform gazing wistfully out a classroom window at cherry blossoms drifting in the breeze, Kyoto Animation style, slice of life genre, cinematic composition, detailed scenic background with desks and chalkboard, soft golden afternoon lighting streaming through window, highly detailed expressive eyes with light reflections, peaceful melancholic atmosphere, warm color palette --niji 6 --ar 16:9 --s 400
 ```
 
-### Retro 80s Anime
+### Retro 80s Anime - Classic Aesthetic
 ```
-A space pilot in a vintage cockpit with analog displays and warning lights, 80s anime style, retro anime, Leiji Matsumoto influence, space opera, cel-shaded, film grain, nostalgic --niji 6 --ar 4:3 --s 500
+A determined space pilot with flowing hair sitting in a vintage mechanical cockpit surrounded by analog displays, blinking warning lights, and radar screens, 80s anime style, classic retro anime aesthetic, Leiji Matsumoto influence, space opera genre, traditional cel-shaded look, subtle film grain texture, nostalgic warm color grading, stars visible through cockpit window --niji 6 --ar 4:3 --s 500
 ```
 
 ### With SREF Code (Ghibli Style)
@@ -599,8 +612,8 @@ A young mage in casual modern clothes at a coffee shop, relaxed pose, slice of l
 2. **Front-load artist/studio names** - they have strong influence
 3. **Use `--style raw` when needed**: For less stylized, more literal output (otherwise Niji 6 uses default anime style)
    - Note: Style modes (cute/expressive/scenic/original) require Niji 5
-4. **Keep under 60 words** for best results
-5. **Use genre keywords** to reinforce the style
+4. **Use descriptive prompts** - Niji 6 rewards longer, more specific prompts that explain what you want
+5. **Use aesthetic keywords** - Include style keywords (kawaii, dramatic, cinematic, etc.) to achieve desired look
 6. **Stylize values**:
    - 100-300: Faithful to prompt
    - 400-600: Balanced

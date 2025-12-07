@@ -114,6 +114,19 @@ A Claude Code plugin that generates optimized anime and manga prompts for Midjou
 
 > **Version Note**: Style modes (`--style cute`, `--style expressive`, `--style scenic`, `--style original`) are only available in **Niji 5**. Niji 6 uses default anime style or `--style raw`.
 
+## Style Aesthetic Keywords
+
+Since Niji 6 doesn't have style mode parameters, use these keywords in your prompts:
+
+| Aesthetic | Keywords to Include |
+|-----------|---------------------|
+| **Cute/Kawaii** | kawaii, adorable, chibi, soft colors, whimsical, pastel tones, big sparkling eyes |
+| **Expressive/Dramatic** | dramatic, emotional, intense expression, dynamic pose, bold colors, high contrast, action lines |
+| **Scenic/Environmental** | cinematic, detailed background, scenic view, atmospheric, landscape, golden hour lighting |
+| **Classic/Retro** | classic anime, retro anime, 80s anime, 90s anime, cel-shaded, traditional anime aesthetic |
+
+**Tip**: Niji 6 rewards longer, more descriptive prompts. Describe what you want in detail.
+
 ## SREF Code Library
 
 Curated SREF codes for consistent anime visual styles. See [docs/sref-library.md](./docs/sref-library.md) for full library.
@@ -159,14 +172,14 @@ A young adventurer discovering a hidden forest spirit, Studio Ghibli style, Haya
 A lone warrior facing a demon in a gothic cathedral, Berserk style, Kentaro Miura, dark fantasy, hyper-detailed linework --niji 6 --ar 2:3 --s 800
 ```
 
-### Magical Girl
+### Magical Girl (Cute Aesthetic)
 ```
-A magical girl mid-transformation with sparkles, Sailor Moon style, Naoko Takeuchi, magical girl, pastel colors --niji 6 --ar 9:16 --s 600
+A magical girl mid-transformation with sparkles and ribbons spiraling around her, Sailor Moon style, Naoko Takeuchi, magical girl genre, kawaii, adorable expression, big sparkling eyes, soft pastel colors, pink and lavender palette, cosmic starry background, dynamic graceful pose --niji 6 --ar 9:16 --s 600
 ```
 
-### With SREF Code
+### With SREF Code (Scenic Aesthetic)
 ```
-A girl walking through a sunlit meadow, magical realism, soft lighting --niji 6 --ar 16:9 --sref 3408846050 --sw 300
+A young girl walking through a sunlit meadow filled with wildflowers swaying in the breeze, Studio Ghibli style, magical realism, cinematic wide shot, detailed scenic background, soft golden hour lighting, peaceful contemplative mood --niji 6 --ar 16:9 --sref 3408846050 --sw 300
 ```
 
 ### Character Reference Sheet
@@ -176,7 +189,7 @@ character reference sheet, young female sorcerer with long silver hair and purpl
 
 ### Using Character Reference
 ```
-A sorcerer casting a spell in a magical forest --niji 6 --ar 16:9 --cref [URL] --cw 100
+A young sorcerer casting a powerful spell in an ancient magical forest, purple arcane energy swirling around raised hands, dramatic lighting from below, intense focused expression, mystical atmosphere --niji 6 --ar 16:9 --cref [URL] --cw 100
 ```
 
 ## Character Consistency

@@ -80,6 +80,17 @@ Studio Ghibli, Kyoto Animation, MAPPA, Ufotable, WIT Studio, Bones, Madhouse, Tr
 
 > **Note**: Style modes (`--style cute`, `--style expressive`, `--style scenic`, `--style original`) are only available in **Niji 5**. Niji 6 uses default anime style or `--style raw`.
 
+### Style Aesthetic Keywords
+
+Since Niji 6 doesn't have style mode parameters, use these keywords in prompts:
+
+| Aesthetic | Keywords |
+|-----------|----------|
+| **Cute/Kawaii** | kawaii, adorable, chibi, soft colors, rounded features, whimsical, pastel tones, big sparkling eyes |
+| **Expressive/Dramatic** | dramatic, emotional, detailed linework, intense expression, dynamic pose, bold colors, high contrast, action lines |
+| **Scenic/Environmental** | cinematic, detailed background, environmental focus, scenic view, atmospheric, landscape, wide shot, golden hour lighting |
+| **Classic/Retro** | classic anime, retro anime, 80s anime, 90s anime, cel-shaded, traditional anime aesthetic |
+
 ### Character Consistency Support
 
 **Reference Sheet Types:**
@@ -170,19 +181,19 @@ A young adventurer discovering a hidden forest spirit, Studio Ghibli style, Haya
 A lone warrior facing a demon in a gothic cathedral, Berserk style, Kentaro Miura, dark fantasy, hyper-detailed linework, atmospheric --niji 6 --ar 2:3 --s 800
 ```
 
-### Magical Girl
+### Magical Girl (Cute Aesthetic)
 ```
-A magical girl mid-transformation with sparkles and ribbons, Sailor Moon style, Naoko Takeuchi, magical girl, pastel colors, cosmic background --niji 6 --ar 9:16 --s 600
-```
-
-### Cyberpunk
-```
-A courier on a motorcycle through neon-lit streets, Akira style, Katsuhiro Otomo, cyberpunk, rain reflections, intricate machinery --niji 6 --ar 21:9 --s 750
+A magical girl mid-transformation with sparkles and ribbons spiraling around her, Sailor Moon style, Naoko Takeuchi, magical girl genre, kawaii, adorable expression, big sparkling eyes, soft pastel colors, pink and lavender palette, cosmic starry background, dynamic graceful pose, soft glowing lighting --niji 6 --ar 9:16 --s 600
 ```
 
-### With SREF Code (Ghibli)
+### Cyberpunk (Expressive Aesthetic)
 ```
-A girl walking through a sunlit meadow, magical realism, soft lighting --niji 6 --ar 16:9 --sref 3408846050 --sw 300
+A courier on a futuristic motorcycle racing through neon-lit Neo Tokyo streets at night, Akira style, Katsuhiro Otomo, cyberpunk dystopia, dramatic lighting, rain reflections on wet asphalt, intricate machinery details, bold high-contrast colors, dynamic motion blur, intense expression --niji 6 --ar 21:9 --s 750
+```
+
+### With SREF Code (Scenic Aesthetic)
+```
+A young girl walking through a sunlit meadow filled with wildflowers swaying in the breeze, Studio Ghibli style, magical realism, cinematic wide shot, detailed scenic background, soft golden hour lighting, atmospheric haze, peaceful contemplative mood --niji 6 --ar 16:9 --sref 3408846050 --sw 300
 ```
 
 ### With SREF Code (Dark)
@@ -221,5 +232,5 @@ A young sorcerer casting a spell in a magical forest, purple energy swirling, dr
 2. **Front-load artist names** - they strongly influence output
 3. **Use `--style raw` when needed**: For less stylized, more literal output (Niji 6 uses default anime style otherwise)
    - Note: Style modes (cute/expressive/scenic/original) require Niji 5
-4. **Keep prompts under 60 words** for best results
-5. **Use genre keywords** to reinforce the aesthetic
+4. **Use descriptive prompts** - Niji 6 rewards longer, more specific prompts that explain what you want
+5. **Use aesthetic keywords** - Include style keywords (kawaii, dramatic, cinematic, etc.) to achieve desired look
