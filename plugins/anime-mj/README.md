@@ -7,6 +7,7 @@ A Claude Code plugin that generates optimized anime and manga prompts for Midjou
 - **30+ manga/anime artists** with style keywords
 - **14 anime studios** with distinct aesthetics
 - **40+ curated SREF codes** for consistent visual styles
+- **Character consistency workflows** with reference sheet templates
 - **6 genre categories**: Shonen, Seinen, Shoujo, Slice of Life, Mecha, Horror
 - **Full Niji 6 support** with all style modes
 - **Interactive prompt building** with guided questions
@@ -36,7 +37,8 @@ A Claude Code plugin that generates optimized anime and manga prompts for Midjou
 4. **Select Niji style mode** (cute/expressive/scenic/original)
 5. **Choose aspect ratio**
 6. **Apply SREF code** (optional - for consistent visual style)
-7. **Output** ready-to-use prompt
+7. **Apply character reference** (optional - for character consistency)
+8. **Output** ready-to-use prompt
 
 ## Supported Artists
 
@@ -107,6 +109,8 @@ A Claude Code plugin that generates optimized anime and manga prompts for Midjou
 | `--sref` | Style reference code |
 | `--sw` | Style weight (0-1000) |
 | `--cref` | Character reference |
+| `--cw` | Character weight (0-100) |
+| `--oref` | Omni reference (V7) |
 
 ## SREF Code Library
 
@@ -162,6 +166,45 @@ A magical girl mid-transformation with sparkles, Sailor Moon style, Naoko Takeuc
 ```
 A girl walking through a sunlit meadow, magical realism, soft lighting --niji 6 --style scenic --ar 16:9 --sref 3408846050 --sw 300
 ```
+
+### Character Reference Sheet
+```
+character reference sheet, young female sorcerer with long silver hair and purple eyes, multiple views, front view, side view, three-quarter view, back view, clean white background, full body --niji 6 --ar 16:9
+```
+
+### Using Character Reference
+```
+A sorcerer casting a spell in a magical forest --niji 6 --style expressive --ar 16:9 --cref [URL] --cw 100
+```
+
+## Character Consistency
+
+Create consistent characters across multiple images using reference sheets and the `--cref` parameter.
+
+### Reference Sheet Types
+
+| Type | Description |
+|------|-------------|
+| Multi-view | Front, side, 3/4, back views |
+| Expression | Happy, sad, angry, surprised, neutral |
+| Outfit | Same character, different clothes |
+| Turntable | 360-degree rotation views |
+
+### Character Weight Guide
+
+| Weight | Effect | Use Case |
+|--------|--------|----------|
+| `--cw 100` | Full character (face + hair + clothes) | Same outfit, different pose |
+| `--cw 50` | Moderate similarity | Different outfit, same character |
+| `--cw 0` | Face only | Complete costume change |
+
+### V6/V7 Compatibility
+
+| Version | Parameter | Notes |
+|---------|-----------|-------|
+| V6 / Niji 6 | `--cref` | Primary method |
+| V7 | `--oref` | Preferred in V7 |
+| V7 | `--cref` | Still works but may be deprecated |
 
 ## Documentation
 

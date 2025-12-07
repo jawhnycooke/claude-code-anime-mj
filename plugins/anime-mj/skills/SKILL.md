@@ -19,6 +19,9 @@ Use this skill when users:
 6. **Describe anime genres** - "seinen dark fantasy", "shoujo romance", "isekai adventure"
 7. **Ask about SREF codes** - "What SREF code for Ghibli?", "Anime style reference codes"
 8. **Want consistent styling** - "Make it look like...", "Same style as...", "Visual consistency"
+9. **Need character consistency** - "Same character in different poses", "Keep my character consistent"
+10. **Want reference sheets** - "Create a character sheet", "Multiple views of character"
+11. **Ask about --cref** - "How do I use character reference?", "What is --cref?"
 
 ## When NOT to Activate
 
@@ -69,6 +72,21 @@ Studio Ghibli, Kyoto Animation, MAPPA, Ufotable, WIT Studio, Bones, Madhouse, Tr
 - `--sref` (style reference)
 - `--sw` (style weight 0-1000)
 - `--cref` (character reference)
+- `--cw` (character weight 0-100)
+- `--oref` (omni reference, V7)
+
+### Character Consistency Support
+
+**Reference Sheet Types:**
+- Multi-view sheets (front, side, 3/4, back)
+- Expression sheets (happy, sad, angry, surprised, neutral)
+- Outfit variation sheets (same character, different clothes)
+- Turntable/360 views
+
+**Character Weight Guide:**
+- `--cw 100`: Full character (face + hair + clothes)
+- `--cw 50`: Moderate similarity (different outfit, same character)
+- `--cw 0`: Face only (complete costume change)
 
 ### SREF Code Library (40+ Curated Codes)
 
@@ -99,7 +117,13 @@ Determine Niji style mode and aspect ratio.
 ### Step 5: Style Reference (Optional)
 Offer SREF codes from the curated library based on genre.
 
-### Step 6: Build Prompt
+### Step 6: Character Reference (Optional)
+Ask if user needs character consistency:
+- Create new character → offer reference sheet templates
+- Use existing reference → get URL and suggest --cw weight
+- Skip for single images
+
+### Step 7: Build Prompt
 Construct and output the ready-to-use Niji prompt.
 
 ## Example Outputs
@@ -132,6 +156,16 @@ A girl walking through a sunlit meadow, magical realism, soft lighting --niji 6 
 ### With SREF Code (Dark)
 ```
 A knight before an ancient demon gate, dark fantasy, gothic atmosphere --niji 6 --style expressive --ar 2:3 --sref 416523183 --sw 400
+```
+
+### Character Reference Sheet
+```
+character reference sheet, young female sorcerer with long silver hair and purple eyes wearing a dark cloak, multiple views, front view, side view, three-quarter view, back view, clean white background, full body, anime style --niji 6 --ar 16:9
+```
+
+### Using Character Reference
+```
+A young sorcerer casting a spell in a magical forest, purple energy swirling, dramatic lighting --niji 6 --style expressive --ar 16:9 --cref https://cdn.discordapp.com/attachments/... --cw 100
 ```
 
 ## Key Principles

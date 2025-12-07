@@ -166,13 +166,58 @@ Options:
 - Very Strong (--sw 750, style-first)
 ```
 
-### Step 6: Build and Output Prompt
+### Step 6: Character Reference (Optional)
+
+Ask if the user wants to maintain character consistency across multiple images:
+```
+Question: "Do you want to maintain character consistency across images?"
+Options:
+- Create new character (generate reference sheet first)
+- Use existing reference (provide image URL)
+- Skip (single image, no consistency needed)
+```
+
+**If Create New Character**, offer reference sheet types:
+```
+Question: "What type of character reference sheet?"
+Options:
+- Multi-view (front, side, 3/4, back views)
+- Expression sheet (happy, sad, angry, surprised, neutral)
+- Outfit variations (same character, different clothes)
+- Turntable (360 rotation views)
+```
+
+**Reference Sheet Templates:**
+
+| Type | Template |
+|------|----------|
+| Multi-view | `character reference sheet, [description], multiple views, front view, side view, three-quarter view, back view, clean white background, full body --niji 6 --ar 16:9` |
+| Expression | `expression sheet, [description], multiple expressions, happy, sad, angry, surprised, neutral, head shots, clean white background --niji 6 --ar 16:9` |
+| Outfit | `outfit variation sheet, [description], same character different outfits, casual, formal, combat, clean white background --niji 6 --ar 16:9` |
+| Turntable | `character turntable, [description], 360 rotation, multiple angles, clean white background, full body --niji 6 --ar 21:9` |
+
+**If Use Existing Reference**, ask for URL and weight:
+```
+Question: "How much should the character reference influence the result?"
+Options:
+- Full character (--cw 100, keeps face + hair + clothes)
+- Moderate (--cw 50, same character, allows outfit changes)
+- Face only (--cw 0, only preserves facial features)
+```
+
+**Character Reference Workflow:**
+1. Generate reference sheet → Upload to Discord → Copy image URL
+2. Use URL in subsequent prompts with `--cref [URL]`
+3. Adjust `--cw` based on how much variation you want
+
+### Step 7: Build and Output Prompt
 
 Construct the prompt following this structure:
 1. **Subject** - Character/scene description
 2. **Artist/Studio Style** - Reference keywords
 3. **Genre Keywords** - Relevant aesthetic terms
 4. **Parameters** - Niji mode and settings
+5. **References** - SREF and/or CREF if selected
 
 Output in a code block ready to paste.
 
@@ -322,6 +367,38 @@ neon lights, rain, holographic displays, cybernetic, dystopian cityscape, night 
 | `--sref [a]::2 [b]::1` | Weighted blend | `--sref 123::2 456::1` |
 | `--sv 4` | Use legacy V7 SREF model | For old code compatibility |
 
+### Character Reference Parameters
+
+| Parameter | Description | Example |
+|-----------|-------------|---------|
+| `--cref [URL]` | Character reference image | `--cref https://cdn.discordapp.com/...` |
+| `--cw [0-100]` | Character weight | `--cw 50` |
+| `--oref [URL]` | Omni reference (V7) | `--oref https://cdn.discordapp.com/...` |
+| `--cref [URL1] [URL2]` | Multiple references | Chain URLs for multi-character |
+
+### Character Weight Guide
+
+| Weight | Effect | Use Case |
+|--------|--------|----------|
+| `--cw 100` | Full character (face + hair + clothes) | Same outfit, different pose/scene |
+| `--cw 50` | Moderate similarity | Different outfit, same character |
+| `--cw 0` | Face only | Complete costume/style change |
+
+### V6/V7 Character Reference Compatibility
+
+| Version | Parameter | Notes |
+|---------|-----------|-------|
+| V6 / Niji 6 | `--cref` | Primary method for character reference |
+| V7 | `--oref` | Preferred in V7 (Omni Reference) |
+| V7 | `--cref` | Still works but may be deprecated |
+
+**Best Practices for Character References:**
+1. Generate reference with Midjourney/Niji first (works better than external images)
+2. Use clean white backgrounds for reference sheets
+3. Single character per reference image (avoid confusion)
+4. Front-facing, well-lit source images work best
+5. Higher resolution = more detail for Midjourney to reference
+
 ---
 
 ## Example Prompts
@@ -379,6 +456,26 @@ A young girl walking through a sunlit meadow filled with wildflowers, Studio Ghi
 ### With SREF Code (Dark Fantasy)
 ```
 A knight standing before an ancient demon gate, dark fantasy, gothic atmosphere --niji 6 --style expressive --ar 2:3 --sref 416523183 --sw 400
+```
+
+### Character Reference Sheet (Multi-view)
+```
+character reference sheet, young female mage with long silver hair and purple eyes wearing a dark cloak, multiple views, front view, side view, three-quarter view, back view, clean white background, full body, anime style --niji 6 --ar 16:9
+```
+
+### Character Reference Sheet (Expressions)
+```
+expression sheet, young female mage with long silver hair and purple eyes, multiple expressions, happy, sad, angry, surprised, neutral, determined, head shots, clean white background --niji 6 --ar 16:9
+```
+
+### Using Character Reference (Full)
+```
+A young mage casting a spell in a magical forest, purple energy swirling, dramatic lighting --niji 6 --style expressive --ar 16:9 --cref https://cdn.discordapp.com/attachments/... --cw 100
+```
+
+### Using Character Reference (Outfit Change)
+```
+A young mage in casual modern clothes at a coffee shop, relaxed pose, slice of life --niji 6 --style cute --ar 16:9 --cref https://cdn.discordapp.com/attachments/... --cw 50
 ```
 
 ---
