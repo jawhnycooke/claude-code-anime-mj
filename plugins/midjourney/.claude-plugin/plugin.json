@@ -1,0 +1,21 @@
+{
+  "name": "midjourney",
+  "version": "1.0.0",
+  "description": "Interactive Midjourney prompt builder for Claude Code. Generates optimized prompts for images and anime (Niji mode) with support for V7, style references, and prominent anime artist styles.",
+  "author": "Jawhny Cooke",
+  "keywords": [
+    "midjourney",
+    "ai-art",
+    "image-generation",
+    "prompt-engineering",
+    "anime",
+    "niji",
+    "stable-diffusion"
+  ],
+  "homepage": "https://github.com/jawhnycooke/claude-code-midjourney",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jawhnycooke/claude-code-midjourney.git"
+  },
+  "license": "MIT"
+}
