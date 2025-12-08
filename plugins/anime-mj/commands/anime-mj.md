@@ -595,53 +595,14 @@ When the user selects an aesthetic vibe, include these keywords in the generated
 
 ---
 
-## Internal Reference: SREF Auto-Matching
+## Internal Reference: SREF Code Selection
 
-> **Note**: This section is for the AI to reference when selecting SREF codes. Do not show this table to users - instead, automatically suggest a matching code in Step 5 based on their selections.
+> **Note**: Reference `docs/sref-library.md` for SREF codes. Do not show lookup tables to users.
 
-Reference `docs/sref-library.md` for the full code library. Use this logic to match:
+**Match by**:
+1. **Tags** - Match user's genre/aesthetic to tag keywords in the library
+2. **Best For** - Match user's subject/scene description
+3. **Category** - Ghibli/Soft, Shonen/Dynamic, Seinen/Dark, Shoujo/Elegant, Retro, Modern
+4. **Default** - Use `918084796` (Anime Serenity) for general anime
 
-### By Genre + Aesthetic
-
-| Genre | Aesthetic | Best SREF | Code |
-|-------|-----------|-----------|------|
-| Shoujo | Cute/Kawaii | Iridescence | `2178024008` |
-| Shoujo | Dramatic | Colorful Elegance | `3986738193` |
-| Shonen | Dramatic | Dynamic Comic | `3730983883` |
-| Shonen | Cute | Cheerful Anime | `2063895279` |
-| Seinen | Dramatic | Dark Warrior | `229704573` |
-| Seinen | Scenic | Nostalgia Dark | `3136260955` |
-| Slice of Life | Scenic | Anime Serenity | `918084796` |
-| Slice of Life | Cute | Pastel Garden | `3161604773` |
-| Mecha | Dramatic | Cyberpunk Anime | `3121740568` |
-| Horror | any | Anime Vampire | `416523183` |
-| Any | Classic/Retro | 80s Retro | `16809792746` |
-
-### By Artist/Studio
-
-| Artist or Studio | Best SREF | Code |
-|------------------|-----------|------|
-| Studio Ghibli, Miyazaki | Ghibli Vibes | `3408846050` |
-| Kyoto Animation | Anime Serenity | `918084796` |
-| Kentaro Miura, Berserk | Dark Warrior | `229704573` |
-| Junji Ito | Anime Vampire | `416523183` |
-| Naoko Takeuchi, Sailor Moon | Iridescence | `2178024008` |
-| CLAMP | Colorful Elegance | `3986738193` |
-| Makoto Shinkai | Gentle Pastel | `3573349435` |
-| Katsuhiro Otomo, Akira | 90s Cyberpunk | `3986738193` |
-| Hirohiko Araki, JoJo | Bold Expression | `2694724947` |
-| MAPPA | Neo-Noir | `65` |
-| Trigger, Imaishi | Vibrant Manga | `910384726` |
-
-### Fallback Logic
-
-If no direct match:
-1. Match by aesthetic first (Cute→soft codes, Dramatic→dynamic codes, etc.)
-2. Match by genre second
-3. Default to `918084796` (Anime Serenity) for general anime
-
-**Suggested Style Weights**:
-- Subtle influence: `--sw 100`
-- Noticeable style: `--sw 300` (recommended default)
-- Strong influence: `--sw 500`
-- Style-dominant: `--sw 750`
+**Style weights**: Light=100, Medium=300, Strong=500, Very Strong=750
