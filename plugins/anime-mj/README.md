@@ -35,12 +35,13 @@ A Claude Code plugin that generates optimized anime and manga prompts for Midjou
 1. **Select genre** (Shonen/Seinen/Shoujo/Slice of Life/Mecha/Horror)
 2. **Choose artist or studio style**
 3. **Describe your subject**
-4. **Select Niji style mode** (cute/expressive/scenic/original)
+4. **Select aesthetic vibe** (Cute/Dramatic/Scenic/Classic/Skip)
 5. **Choose aspect ratio**
-6. **Apply SREF code** (optional - for consistent visual style)
+6. **Apply SREF code** (auto-matched based on your selections)
 7. **Apply character reference** (optional - for character consistency)
 8. **Animate image** (optional - for video/animation, web app only)
-9. **Output** ready-to-use prompt
+9. **Choose output structure** (Standard/Granular/Maximum)
+10. **Output** structured, ready-to-use prompt
 
 ## Supported Artists
 
@@ -147,35 +148,45 @@ Curated SREF codes for consistent anime visual styles. See [docs/sref-library.md
 
 ## What You Say → What You Get
 
-The plugin builds detailed prompts from simple inputs. Here's what that looks like:
+The plugin builds detailed, **structured prompts** from simple inputs. Each section is labeled for easy modification:
 
 ### Simple Request
 **You say**: "magical girl transformation, Sailor Moon style"
 **You get**:
 ```
-A magical girl mid-transformation with sparkles and ribbons spiraling around her, Sailor Moon style, Naoko Takeuchi, kawaii, adorable expression, big sparkling eyes, soft pastel colors, cosmic background --niji 6 --ar 9:16 --s 600
+[Character] magical girl, adorable expression, big sparkling eyes | [Action] mid-transformation, dynamic graceful pose | [Scene] cosmic starry background, sparkles and ribbons spiraling | [Style] Sailor Moon, Naoko Takeuchi | [Genre] magical girl, shoujo, kawaii | [Mood] soft pastel colors, soft glowing lighting --niji 6 --ar 9:16 --s 600
 ```
 
 ### Dark Fantasy
 **You say**: "warrior facing a demon, Berserk style"
 **You get**:
 ```
-A lone warrior in black armor facing a massive demon in a gothic cathedral, Berserk style, Kentaro Miura, dark fantasy, dramatic, intense expression, hyper-detailed linework --niji 6 --ar 2:3 --s 800
+[Character] lone warrior, black armor, intense expression | [Action] facing massive demon, battle stance | [Scene] gothic cathedral, atmospheric fog | [Style] Berserk, Kentaro Miura | [Genre] dark fantasy, seinen, dramatic | [Mood] hyper-detailed linework, bold high-contrast colors --niji 6 --ar 2:3 --s 800
 ```
 
 ### With Style Reference
 **You say**: "peaceful meadow scene, Ghibli style, add a matching SREF"
 **You get**:
 ```
-A young girl walking through a sunlit meadow filled with wildflowers, Studio Ghibli style, magical realism, cinematic, soft golden hour lighting --niji 6 --ar 16:9 --sref 3408846050 --sw 300
+[Character] young girl | [Action] walking through meadow | [Scene] sunlit meadow, wildflowers swaying | [Style] Studio Ghibli | [Genre] magical realism, cinematic | [Mood] soft golden hour lighting, atmospheric haze, peaceful --niji 6 --ar 16:9 --sref 3408846050 --sw 300
 ```
 
 ### Character Reference Sheet
 **You say**: "create a character sheet for my mage character"
 **You get**:
 ```
-character reference sheet, [your character description], multiple views, front view, side view, three-quarter view, back view, clean white background, full body --niji 6 --ar 16:9
+[Character] young female sorcerer, long silver hair, purple eyes, dark cloak | [Action] multiple views, front, side, three-quarter, back | [Scene] clean white background | [Style] anime | [Genre] character reference sheet | [Mood] full body, clear details --niji 6 --ar 16:9
 ```
+
+### Structure Levels
+
+The plugin offers three structure levels to match your editing needs:
+
+| Level | Sections | Best For |
+|-------|----------|----------|
+| **Standard** | 6 sections | Most edits - balanced control |
+| **Granular** | 8 sections | Fine-tuning details |
+| **Maximum** | 10 sections | Full element control |
 
 ## Character Consistency
 
@@ -234,13 +245,13 @@ Animate your anime images using Midjourney's V1 video model. See [docs/video-ani
 
 ```
 # Action scene
-[Image URL] dynamic camera tracking, speed lines, impact frame, high motion --video
+[Image URL] dynamic camera tracking, speed lines effect, impact frame, explosive movement, high motion --video
 
 # Peaceful moment
-[Image URL] gentle breeze, hair flowing, subtle movement, low motion --video --raw
+[Image URL] gentle breeze through hair, soft fabric movement, peaceful atmosphere, low motion --video --raw
 
 # Seamless loop
-[Image URL] seamless loop, soft breathing, subtle --video loop --raw
+[Image URL] seamless loop, hair gently swaying, soft breathing motion, subtle --video loop --raw
 ```
 
 ## Documentation

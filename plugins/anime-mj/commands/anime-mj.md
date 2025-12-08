@@ -270,14 +270,43 @@ Options:
 
 **Full library**: See [docs/video-animation.md](../docs/video-animation.md) for complete animation reference.
 
+### Step 7.5: Output Structure
+
+Ask user about prompt structure level:
+```
+Question: "How structured do you want your prompt?"
+Options:
+- Standard (6 sections - easy to modify key elements)
+- Granular (8 sections - more control over details)
+- Maximum (10 sections - full element-by-element control)
+```
+
+**Structure Templates:**
+
+| Level | Sections |
+|-------|----------|
+| Standard | `[Character]` `[Action]` `[Scene]` `[Style]` `[Genre]` `[Mood]` |
+| Granular | `[Character]` `[Expression]` `[Pose]` `[Props]` `[Setting]` `[Background]` `[Style]` `[Lighting]` |
+| Maximum | `[Character]` `[Expression]` `[Pose]` `[Action]` `[Props]` `[Setting]` `[Background]` `[Artist]` `[Genre]` `[Visual]` |
+
 ### Step 8: Build and Output Prompt
 
-Construct the prompt following this structure:
-1. **Subject** - Character/scene description
-2. **Artist/Studio Style** - Reference keywords
-3. **Genre Keywords** - Relevant aesthetic terms
-4. **Parameters** - Niji mode and settings
-5. **References** - SREF and/or CREF if selected
+Construct the prompt using the selected structure level with ` | ` as section delimiter:
+
+**Standard (6 sections):**
+```
+[Character] who, appearance, expression | [Action] pose, activity | [Scene] setting, environment | [Style] artist, studio | [Genre] anime genre, aesthetic | [Mood] lighting, colors, effects --parameters
+```
+
+**Granular (8 sections):**
+```
+[Character] who, appearance | [Expression] emotion | [Pose] body position | [Props] items | [Setting] location | [Background] distant elements | [Style] artist, studio, genre | [Lighting] colors, effects --parameters
+```
+
+**Maximum (10 sections):**
+```
+[Character] who, appearance | [Expression] emotion | [Pose] body position | [Action] activity | [Props] items | [Setting] location | [Background] distant elements | [Artist] artist/studio | [Genre] anime genre | [Visual] lighting, colors, effects --parameters
+```
 
 Output in a code block ready to paste.
 
@@ -477,60 +506,60 @@ neon lights, rain, holographic displays, cybernetic, dystopian cityscape, night 
 
 ## Example: What You Say → What You Get
 
-These examples show simple user inputs and the prompts the plugin generates.
+These examples show simple user inputs and the structured prompts the plugin generates (Standard level shown).
 
 ### Magical Girl Transformation
 
 **You say**: "magical girl transformation, Sailor Moon style"
-**You pick**: Shoujo genre, Naoko Takeuchi, Cute/Kawaii aesthetic, 9:16 portrait
+**You pick**: Shoujo genre, Naoko Takeuchi, Cute/Kawaii aesthetic, 9:16 portrait, Standard structure
 **You get**:
 ```
-A magical girl mid-transformation with sparkles and ribbons spiraling around her, Sailor Moon style, Naoko Takeuchi, magical girl genre, kawaii, adorable expression, big sparkling eyes, soft pastel colors, cosmic starry background, dynamic graceful pose, soft glowing lighting --niji 6 --ar 9:16 --s 600
+[Character] magical girl, adorable expression, big sparkling eyes | [Action] mid-transformation, dynamic graceful pose | [Scene] cosmic starry background, sparkles and ribbons spiraling | [Style] Sailor Moon, Naoko Takeuchi | [Genre] magical girl, shoujo, kawaii | [Mood] soft pastel colors, soft glowing lighting --niji 6 --ar 9:16 --s 600
 ```
 
 ### Dark Fantasy Warrior
 
 **You say**: "warrior facing a demon in a cathedral"
-**You pick**: Seinen genre, Kentaro Miura, Dramatic/Expressive aesthetic, 2:3 portrait
+**You pick**: Seinen genre, Kentaro Miura, Dramatic/Expressive aesthetic, 2:3 portrait, Standard structure
 **You get**:
 ```
-A lone warrior in black armor facing a massive demon in a gothic cathedral, Berserk style, Kentaro Miura, dark fantasy, dramatic, intense expression, hyper-detailed linework, bold high-contrast colors, atmospheric fog --niji 6 --ar 2:3 --s 800
+[Character] lone warrior, black armor, intense expression | [Action] facing massive demon, battle stance | [Scene] gothic cathedral, atmospheric fog | [Style] Berserk, Kentaro Miura | [Genre] dark fantasy, seinen, dramatic | [Mood] hyper-detailed linework, bold high-contrast colors --niji 6 --ar 2:3 --s 800
 ```
 
 ### Peaceful School Scene
 
 **You say**: "girl looking out classroom window at cherry blossoms"
-**You pick**: Slice of Life genre, Kyoto Animation, Scenic/Atmospheric aesthetic, 16:9 widescreen
+**You pick**: Slice of Life genre, Kyoto Animation, Scenic/Atmospheric aesthetic, 16:9 widescreen, Standard structure
 **You get**:
 ```
-A high school girl gazing wistfully out a classroom window at cherry blossoms drifting in the breeze, Kyoto Animation style, slice of life, cinematic, detailed scenic background, soft golden afternoon lighting, atmospheric, peaceful mood --niji 6 --ar 16:9 --s 400
+[Character] high school girl, wistful expression | [Action] gazing out classroom window | [Scene] cherry blossoms drifting in breeze, detailed background | [Style] Kyoto Animation | [Genre] slice of life, cinematic, atmospheric | [Mood] soft golden afternoon lighting, peaceful --niji 6 --ar 16:9 --s 400
 ```
 
 ### Retro Space Pilot
 
 **You say**: "space pilot in cockpit, 80s anime style"
-**You pick**: Mecha genre, Leiji Matsumoto, Classic/Retro aesthetic, 4:3 classic
+**You pick**: Mecha genre, Leiji Matsumoto, Classic/Retro aesthetic, 4:3 classic, Standard structure
 **You get**:
 ```
-A determined space pilot sitting in a vintage mechanical cockpit surrounded by analog displays and warning lights, 80s anime style, classic retro anime aesthetic, Leiji Matsumoto influence, space opera, cel-shaded, nostalgic warm color grading --niji 6 --ar 4:3 --s 500
+[Character] determined space pilot | [Action] sitting in vintage mechanical cockpit | [Scene] analog displays, warning lights, space opera | [Style] Leiji Matsumoto | [Genre] mecha, classic anime, retro | [Mood] cel-shaded, nostalgic warm color grading --niji 6 --ar 4:3 --s 500
 ```
 
 ### With Style Reference (SREF)
 
 **You say**: "girl walking through meadow, Ghibli style, add a matching SREF"
-**You pick**: Ghibli/Soft SREF category
+**You pick**: Ghibli/Soft SREF category, Standard structure
 **You get**:
 ```
-A young girl walking through a sunlit meadow filled with wildflowers, Studio Ghibli style, magical realism, soft lighting --niji 6 --ar 16:9 --sref 3408846050 --sw 300
+[Character] young girl | [Action] walking through meadow | [Scene] sunlit meadow, wildflowers | [Style] Studio Ghibli | [Genre] magical realism | [Mood] soft lighting, peaceful --niji 6 --ar 16:9 --sref 3408846050 --sw 300
 ```
 
 ### With Character Reference
 
 **You say**: "use my character reference for a mage casting a spell"
-**You provide**: Character reference URL
+**You provide**: Character reference URL, Standard structure
 **You get**:
 ```
-A young mage casting a powerful spell in an ancient magical forest, arcane energy swirling, dramatic lighting, mystical atmosphere --niji 6 --ar 16:9 --cref [your URL] --cw 100
+[Character] young mage | [Action] casting powerful spell | [Scene] ancient magical forest, arcane energy swirling | [Style] fantasy anime | [Genre] magical, mystical | [Mood] dramatic lighting, atmospheric --niji 6 --ar 16:9 --cref [your URL] --cw 100
 ```
 
 ### Create Character Reference Sheet
@@ -540,7 +569,7 @@ A young mage casting a powerful spell in an ancient magical forest, arcane energ
 **You pick**: Multi-view reference type
 **You get**:
 ```
-character reference sheet, young female mage with long silver hair and purple eyes wearing a dark cloak, multiple views, front view, side view, three-quarter view, back view, clean white background, full body, anime style --niji 6 --ar 16:9
+[Character] young female mage, long silver hair, purple eyes, dark cloak | [Action] multiple views, front view, side view, three-quarter view, back view | [Scene] clean white background | [Style] anime | [Genre] character reference sheet | [Mood] full body, clear details --niji 6 --ar 16:9
 ```
 
 ### Animate an Image

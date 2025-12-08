@@ -163,49 +163,55 @@ Ask if user wants to animate their image:
 - No → skip to final output
 - Note: Web app only (not Discord)
 
-### Step 8: Build Prompt
-Construct and output the ready-to-use Niji prompt.
+### Step 7.5: Output Structure
+Ask user about prompt structure level:
+- Standard (6 sections - easy to modify key elements)
+- Granular (8 sections - more control over details)
+- Maximum (10 sections - full element-by-element control)
 
-## Example Outputs
+### Step 8: Build Prompt
+Construct and output the structured Niji prompt using selected level.
+
+## Example Outputs (Standard Structure)
 
 ### Ghibli Style
 ```
-A young adventurer discovering a hidden forest spirit, Studio Ghibli style, Hayao Miyazaki, whimsical, enchanting, lush vegetation, magical realism --niji 6 --ar 16:9 --s 500
+[Character] young adventurer | [Action] discovering hidden forest spirit | [Scene] lush vegetation, enchanting forest | [Style] Studio Ghibli, Hayao Miyazaki | [Genre] magical realism, whimsical | [Mood] soft natural lighting --niji 6 --ar 16:9 --s 500
 ```
 
 ### Dark Fantasy
 ```
-A lone warrior facing a demon in a gothic cathedral, Berserk style, Kentaro Miura, dark fantasy, hyper-detailed linework, atmospheric --niji 6 --ar 2:3 --s 800
+[Character] lone warrior, intense expression | [Action] facing demon, battle stance | [Scene] gothic cathedral, atmospheric | [Style] Berserk, Kentaro Miura | [Genre] dark fantasy, seinen | [Mood] hyper-detailed linework, dramatic shadows --niji 6 --ar 2:3 --s 800
 ```
 
 ### Magical Girl (Cute Aesthetic)
 ```
-A magical girl mid-transformation with sparkles and ribbons spiraling around her, Sailor Moon style, Naoko Takeuchi, magical girl genre, kawaii, adorable expression, big sparkling eyes, soft pastel colors, pink and lavender palette, cosmic starry background, dynamic graceful pose, soft glowing lighting --niji 6 --ar 9:16 --s 600
+[Character] magical girl, adorable expression, big sparkling eyes | [Action] mid-transformation, dynamic graceful pose | [Scene] cosmic starry background, sparkles and ribbons | [Style] Sailor Moon, Naoko Takeuchi | [Genre] magical girl, shoujo, kawaii | [Mood] soft pastel colors, pink and lavender, soft glowing lighting --niji 6 --ar 9:16 --s 600
 ```
 
 ### Cyberpunk (Expressive Aesthetic)
 ```
-A courier on a futuristic motorcycle racing through neon-lit Neo Tokyo streets at night, Akira style, Katsuhiro Otomo, cyberpunk dystopia, dramatic lighting, rain reflections on wet asphalt, intricate machinery details, bold high-contrast colors, dynamic motion blur, intense expression --niji 6 --ar 21:9 --s 750
+[Character] courier, intense expression | [Action] racing on futuristic motorcycle, dynamic motion blur | [Scene] neon-lit Neo Tokyo streets, rain reflections on wet asphalt | [Style] Akira, Katsuhiro Otomo | [Genre] cyberpunk dystopia, seinen | [Mood] bold high-contrast colors, dramatic lighting, intricate machinery --niji 6 --ar 21:9 --s 750
 ```
 
-### With SREF Code (Scenic Aesthetic)
+### With SREF Code (Scenic)
 ```
-A young girl walking through a sunlit meadow filled with wildflowers swaying in the breeze, Studio Ghibli style, magical realism, cinematic wide shot, detailed scenic background, soft golden hour lighting, atmospheric haze, peaceful contemplative mood --niji 6 --ar 16:9 --sref 3408846050 --sw 300
+[Character] young girl | [Action] walking through meadow | [Scene] sunlit meadow, wildflowers swaying | [Style] Studio Ghibli | [Genre] magical realism, cinematic | [Mood] soft golden hour lighting, atmospheric haze, peaceful --niji 6 --ar 16:9 --sref 3408846050 --sw 300
 ```
 
 ### With SREF Code (Dark)
 ```
-A knight before an ancient demon gate, dark fantasy, gothic atmosphere --niji 6 --ar 2:3 --sref 416523183 --sw 400
+[Character] knight | [Action] standing before demon gate | [Scene] ancient ruins, gothic architecture | [Style] dark fantasy | [Genre] seinen, horror | [Mood] atmospheric shadows, ominous --niji 6 --ar 2:3 --sref 416523183 --sw 400
 ```
 
 ### Character Reference Sheet
 ```
-character reference sheet, young female sorcerer with long silver hair and purple eyes wearing a dark cloak, multiple views, front view, side view, three-quarter view, back view, clean white background, full body, anime style --niji 6 --ar 16:9
+[Character] young female sorcerer, long silver hair, purple eyes, dark cloak | [Action] multiple views, front, side, three-quarter, back | [Scene] clean white background | [Style] anime | [Genre] character reference sheet | [Mood] full body, clear details --niji 6 --ar 16:9
 ```
 
 ### Using Character Reference
 ```
-A young sorcerer casting a spell in a magical forest, purple energy swirling, dramatic lighting --niji 6 --ar 16:9 --cref https://cdn.discordapp.com/attachments/... --cw 100
+[Character] young sorcerer | [Action] casting spell, energy swirling | [Scene] magical forest | [Style] fantasy anime | [Genre] magical | [Mood] purple energy, dramatic lighting --niji 6 --ar 16:9 --cref [URL] --cw 100
 ```
 
 ### Animation - Action
