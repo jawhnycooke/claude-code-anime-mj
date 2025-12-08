@@ -234,16 +234,15 @@ Options:
 ```
 Question: "How intense should the motion be?"
 Options:
-- Low (subtle, peaceful, cinemagraph-style)
-- Medium (natural, balanced movement)
-- High (dynamic, energetic, action-focused)
+- Low (--motion low, subtle, cinemagraph-style)
+- High (--motion high, dynamic, energetic)
 ```
 
 **Optional - Loop animation:**
 ```
 Question: "Do you want a seamless loop?"
 Options:
-- Yes (start/end frames match)
+- Yes (adds --loop parameter)
 - No (standard animation)
 ```
 
@@ -251,11 +250,11 @@ Options:
 
 | Style | Template |
 |-------|----------|
-| Action | `[Image URL] dynamic movement, action lines, speed effects, high motion --video` |
-| Slice-of-life | `[Image URL] gentle breeze, hair flowing softly, subtle movement, peaceful --video --raw` |
-| Dramatic | `[Image URL] slow camera push, emotional moment, cinematic, medium motion --video` |
-| Combat | `[Image URL] fast motion, impact frames, explosive movement, high motion --video` |
-| Loop | `[Image URL] seamless loop, [motion description], subtle --video loop` |
+| Action | `[Image URL] dynamic movement, action lines, speed effects --motion high` |
+| Slice-of-life | `[Image URL] gentle breeze, hair flowing softly, subtle movement --motion low --raw` |
+| Dramatic | `[Image URL] slow camera push, emotional moment, cinematic --motion low` |
+| Combat | `[Image URL] fast motion, impact frames, explosive movement --motion high` |
+| Loop | `[Image URL] [motion description], subtle --motion low --loop` |
 
 **Camera Motion Keywords:**
 
@@ -449,15 +448,18 @@ neon lights, rain, holographic displays, cybernetic, dystopian cityscape, night 
 
 | Parameter | Description | Example |
 |-----------|-------------|---------|
-| `--video` | Enable video generation | Required with image URL |
+| `--motion low` | Subtle, gentle movement | Default - cinemagraphs, peaceful |
+| `--motion high` | Dynamic, energetic movement | Action scenes, combat |
 | `--raw` | Reduce AI interpretation | For precise motion control |
-| Motion Level | Movement intensity | "low motion" / "high motion" in prompt |
-| Loop | Seamless loop animation | Add "loop" to prompt |
+| `--loop` | Seamless loop animation | Start/end frames match |
+| `--end` | End frame control | Specify ending state |
+| `--bs #` | Batch size | Generate multiple videos |
 
 **Video Specifications:**
-- Duration: 5 seconds (extendable to 21s)
-- Resolution: 480p (Standard) / 720p (Pro/Mega)
-- Frame Rate: 24 FPS
+- Duration: 5 seconds (extendable to 21s in 4s increments)
+- Resolution: 480p SD (720p HD in Fast Mode for Standard+)
+- Frame Rate: ~30 FPS
+- GPU Cost: 8× regular image generation
 - Platform: Web app only (not Discord)
 
 ### SREF Parameter Details
@@ -578,14 +580,14 @@ These examples show simple user inputs and the structured prompts the plugin gen
 **You pick**: Action motion style, Dynamic camera, High intensity
 **You get**:
 ```
-[Your Image URL] dynamic camera tracking, speed lines effect, impact frame, explosive movement, high motion --video
+[Your Image URL] dynamic camera tracking, speed lines effect, impact frame --motion high
 ```
 
 **You say**: "make a peaceful loop animation"
 **You pick**: Slice-of-life motion, Static camera, Loop
 **You get**:
 ```
-[Your Image URL] seamless loop, gentle breeze, hair gently swaying, soft breathing motion, subtle --video loop --raw
+[Your Image URL] gentle breeze, hair gently swaying, soft breathing motion --motion low --loop --raw
 ```
 
 ---

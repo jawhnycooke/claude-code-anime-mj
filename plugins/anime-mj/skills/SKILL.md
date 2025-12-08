@@ -76,7 +76,9 @@ Studio Ghibli, Kyoto Animation, MAPPA, Ufotable, WIT Studio, Bones, Madhouse, Tr
 - `--cref` (character reference)
 - `--cw` (character weight 0-100)
 - `--oref` (omni reference, V7)
-- `--video` (enable video generation, web app only)
+- `--motion low` / `--motion high` (video motion intensity)
+- `--loop` (seamless video loop)
+- `--raw` (precise motion control)
 
 ### Character Consistency Support
 
@@ -107,10 +109,11 @@ Studio Ghibli, Kyoto Animation, MAPPA, Ufotable, WIT Studio, Bones, Madhouse, Tr
 - Orbit (circular movement around subject)
 - Static (subtle character animation only)
 
-**Motion Levels:**
-- Low: Subtle, peaceful, cinemagraph-style
-- Medium: Natural, balanced movement
-- High: Dynamic, energetic, action-focused
+**Motion Parameters:**
+- `--motion low`: Subtle, peaceful, cinemagraph-style (default)
+- `--motion high`: Dynamic, energetic, action-focused
+- `--loop`: Seamless looping animation
+- `--raw`: Precise motion control
 
 ### SREF Code Library (40+ Curated Codes)
 
@@ -216,17 +219,17 @@ Construct and output the structured Niji prompt using selected level.
 
 ### Animation - Action
 ```
-[Image URL] dynamic camera tracking, speed lines effect, impact frame, explosive movement, high motion --video
+[Image URL] dynamic camera tracking, speed lines effect, impact frame --motion high
 ```
 
 ### Animation - Peaceful
 ```
-[Image URL] gentle breeze through hair, soft fabric movement, peaceful atmosphere, low motion --video --raw
+[Image URL] gentle breeze through hair, soft fabric movement, peaceful atmosphere --motion low --raw
 ```
 
 ### Animation - Loop
 ```
-[Image URL] seamless loop, hair gently swaying, soft breathing motion, subtle --video loop --raw
+[Image URL] hair gently swaying, soft breathing motion --motion low --loop --raw
 ```
 
 ## Key Principles

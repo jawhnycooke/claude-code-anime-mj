@@ -111,7 +111,9 @@ A Claude Code plugin that generates optimized anime and manga prompts for Midjou
 | `--cref` | Character reference |
 | `--cw` | Character weight (0-100) |
 | `--oref` | Omni reference (V7) |
-| `--video` | Enable video generation (web app only) |
+| `--motion low` | Subtle video motion (web app only) |
+| `--motion high` | Dynamic video motion (web app only) |
+| `--loop` | Seamless video loop (web app only) |
 
 ## SREF Code Library
 
@@ -245,13 +247,13 @@ Animate your anime images using Midjourney's V1 video model. See [docs/video-ani
 
 ```
 # Action scene
-[Image URL] dynamic camera tracking, speed lines effect, impact frame, explosive movement, high motion --video
+[Image URL] dynamic camera tracking, speed lines effect, impact frame --motion high
 
 # Peaceful moment
-[Image URL] gentle breeze through hair, soft fabric movement, peaceful atmosphere, low motion --video --raw
+[Image URL] gentle breeze through hair, soft fabric movement, peaceful atmosphere --motion low --raw
 
 # Seamless loop
-[Image URL] seamless loop, hair gently swaying, soft breathing motion, subtle --video loop --raw
+[Image URL] hair gently swaying, soft breathing motion --motion low --loop --raw
 ```
 
 ## Documentation
