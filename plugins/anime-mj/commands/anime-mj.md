@@ -118,49 +118,34 @@ Options:
 - 21:9 (ultrawide - cinematic)
 ```
 
-### Step 5: Style Reference (Optional)
+### Step 5: Style Reference (Auto-Matched)
 
-Ask if the user wants to apply a style reference for consistent aesthetics:
+Based on the user's genre, artist, and aesthetic selections, automatically suggest a matching SREF code:
+
 ```
-Question: "Would you like to apply a style reference (SREF) for a specific visual style?"
+Question: "I can add a style reference that matches your [genre/aesthetic]. Add it?"
 Options:
-- Browse curated library (show style categories)
-- Enter custom SREF code (if user has their own)
-- Skip (no style reference needed)
+- Yes, add the matching SREF
+- No, skip style reference
+- I have my own SREF code
 ```
 
-**If Browse Library selected**, offer categories based on genre:
+**How to match SREF to user selections** (reference `docs/sref-library.md` for full codes):
+
+| User Selected | Auto-Match SREF | Code |
+|---------------|-----------------|------|
+| Studio Ghibli, Miyazaki, Scenic aesthetic | Ghibli Vibes | `3408846050` |
+| Slice of Life, peaceful, Scenic aesthetic | Anime Serenity | `918084796` |
+| Shonen, action, Dramatic aesthetic | Dynamic Comic | `3730983883` |
+| Seinen, Berserk, dark fantasy, Dramatic | Dark Warrior | `229704573` |
+| Horror, Junji Ito, dark | Anime Vampire | `416523183` |
+| Shoujo, magical girl, Cute aesthetic | Iridescence | `2178024008` |
+| 80s/90s style, Classic/Retro aesthetic | 80s Retro | `16809792746` |
+| Modern shonen, MAPPA, clean | Neo-Noir | `65` |
+
+**If user says yes**, also ask about intensity:
 ```
-Question: "Which style category?"
-Options:
-- Ghibli/Soft (warm, nostalgic, nature-inspired)
-- Shonen/Dynamic (bold, action-oriented, energetic)
-- Seinen/Dark (moody, atmospheric, detailed)
-- Shoujo/Elegant (sparkles, soft lighting, romantic)
-- Retro (80s/90s anime aesthetic)
-- Modern/Clean (contemporary anime look)
-```
-
-**Top SREF Codes Quick Reference:**
-
-| Category | Code | Name | Description |
-|----------|------|------|-------------|
-| Ghibli | `3408846050` | Ghibli Vibes | Studio Ghibli atmospheric quality |
-| Ghibli | `918084796` | Anime Serenity | Peaceful, contemplative mood |
-| Dynamic | `3730983883` | Dynamic Comic | Metallic, action-oriented |
-| Dynamic | `910384726` | Vibrant Manga | Classic manga energy |
-| Dark | `416523183` | Anime Vampire | Dark, gothic styling |
-| Dark | `229704573` | Dark Warrior | Intense, dramatic |
-| Shoujo | `2178024008` | Iridescence | Shimmering, magical effects |
-| Retro | `16809792746` | 80s Retro | Classic 80s OVA look |
-| Retro | `4292182277` | Dark OVA | Dark 80s/90s aesthetic |
-| Modern | `65` | Neo-Noir | Modern noir with anime flair |
-
-**Full library**: See [docs/sref-library.md](../docs/sref-library.md) for 40+ codes.
-
-**Ask about style weight:**
-```
-Question: "How strong should the style reference be?"
+Question: "How strong should the style influence be?"
 Options:
 - Light (--sw 100, subtle influence)
 - Medium (--sw 300, noticeable style)
@@ -607,3 +592,56 @@ When the user selects an aesthetic vibe, include these keywords in the generated
 1. User picks aesthetic → you inject keywords seamlessly into the prompt
 2. User never needs to know these keywords exist
 3. If user skips aesthetic selection, infer from genre/artist (e.g., Sailor Moon → cute, Berserk → dramatic)
+
+---
+
+## Internal Reference: SREF Auto-Matching
+
+> **Note**: This section is for the AI to reference when selecting SREF codes. Do not show this table to users - instead, automatically suggest a matching code in Step 5 based on their selections.
+
+Reference `docs/sref-library.md` for the full code library. Use this logic to match:
+
+### By Genre + Aesthetic
+
+| Genre | Aesthetic | Best SREF | Code |
+|-------|-----------|-----------|------|
+| Shoujo | Cute/Kawaii | Iridescence | `2178024008` |
+| Shoujo | Dramatic | Colorful Elegance | `3986738193` |
+| Shonen | Dramatic | Dynamic Comic | `3730983883` |
+| Shonen | Cute | Cheerful Anime | `2063895279` |
+| Seinen | Dramatic | Dark Warrior | `229704573` |
+| Seinen | Scenic | Nostalgia Dark | `3136260955` |
+| Slice of Life | Scenic | Anime Serenity | `918084796` |
+| Slice of Life | Cute | Pastel Garden | `3161604773` |
+| Mecha | Dramatic | Cyberpunk Anime | `3121740568` |
+| Horror | any | Anime Vampire | `416523183` |
+| Any | Classic/Retro | 80s Retro | `16809792746` |
+
+### By Artist/Studio
+
+| Artist or Studio | Best SREF | Code |
+|------------------|-----------|------|
+| Studio Ghibli, Miyazaki | Ghibli Vibes | `3408846050` |
+| Kyoto Animation | Anime Serenity | `918084796` |
+| Kentaro Miura, Berserk | Dark Warrior | `229704573` |
+| Junji Ito | Anime Vampire | `416523183` |
+| Naoko Takeuchi, Sailor Moon | Iridescence | `2178024008` |
+| CLAMP | Colorful Elegance | `3986738193` |
+| Makoto Shinkai | Gentle Pastel | `3573349435` |
+| Katsuhiro Otomo, Akira | 90s Cyberpunk | `3986738193` |
+| Hirohiko Araki, JoJo | Bold Expression | `2694724947` |
+| MAPPA | Neo-Noir | `65` |
+| Trigger, Imaishi | Vibrant Manga | `910384726` |
+
+### Fallback Logic
+
+If no direct match:
+1. Match by aesthetic first (Cute→soft codes, Dramatic→dynamic codes, etc.)
+2. Match by genre second
+3. Default to `918084796` (Anime Serenity) for general anime
+
+**Suggested Style Weights**:
+- Subtle influence: `--sw 100`
+- Noticeable style: `--sw 300` (recommended default)
+- Strong influence: `--sw 500`
+- Style-dominant: `--sw 750`
