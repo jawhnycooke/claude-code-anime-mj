@@ -78,19 +78,6 @@ Studio Ghibli, Kyoto Animation, MAPPA, Ufotable, WIT Studio, Bones, Madhouse, Tr
 - `--oref` (omni reference, V7)
 - `--video` (enable video generation, web app only)
 
-> **Note**: Style modes (`--style cute`, `--style expressive`, `--style scenic`, `--style original`) are only available in **Niji 5**. Niji 6 uses default anime style or `--style raw`.
-
-### Style Aesthetic Keywords
-
-Since Niji 6 doesn't have style mode parameters, use these keywords in prompts:
-
-| Aesthetic | Keywords |
-|-----------|----------|
-| **Cute/Kawaii** | kawaii, adorable, chibi, soft colors, rounded features, whimsical, pastel tones, big sparkling eyes |
-| **Expressive/Dramatic** | dramatic, emotional, detailed linework, intense expression, dynamic pose, bold colors, high contrast, action lines |
-| **Scenic/Environmental** | cinematic, detailed background, environmental focus, scenic view, atmospheric, landscape, wide shot, golden hour lighting |
-| **Classic/Retro** | classic anime, retro anime, 80s anime, 90s anime, cel-shaded, traditional anime aesthetic |
-
 ### Character Consistency Support
 
 **Reference Sheet Types:**
@@ -148,8 +135,15 @@ Suggest relevant artists or studios based on the genre and description.
 ### Step 3: Gather Details
 Ask about character, scene, action, and atmosphere.
 
-### Step 4: Technical Options
-Determine Niji style mode and aspect ratio.
+### Step 4: Aesthetic & Technical Options
+Ask about desired aesthetic vibe:
+- Cute/Kawaii (adorable, soft, whimsical)
+- Dramatic/Expressive (intense, bold, dynamic)
+- Scenic/Atmospheric (cinematic, environmental)
+- Classic/Retro (80s/90s anime look)
+- Let the artist style guide it (skip)
+
+Then ask about aspect ratio. Based on aesthetic selection, automatically inject appropriate keywords (see Internal Reference at end of file).
 
 ### Step 5: Style Reference (Optional)
 Offer SREF codes from the curated library based on genre.
@@ -230,7 +224,25 @@ A young sorcerer casting a spell in a magical forest, purple energy swirling, dr
 
 1. **Always use --niji 6** for anime generation
 2. **Front-load artist names** - they strongly influence output
-3. **Use `--style raw` when needed**: For less stylized, more literal output (Niji 6 uses default anime style otherwise)
-   - Note: Style modes (cute/expressive/scenic/original) require Niji 5
-4. **Use descriptive prompts** - Niji 6 rewards longer, more specific prompts that explain what you want
-5. **Use aesthetic keywords** - Include style keywords (kawaii, dramatic, cinematic, etc.) to achieve desired look
+3. **Inject aesthetic keywords automatically** - based on user's aesthetic selection in Step 4
+4. **User picks simple options, you build rich prompts** - the plugin handles complexity
+
+---
+
+## Internal Reference: Aesthetic Keywords
+
+> **Note**: This section is for the AI to reference when building prompts. Do not show this table to users.
+
+When the user selects an aesthetic vibe, include these keywords in the generated prompt:
+
+| User Selection | Keywords to Inject |
+|----------------|-------------------|
+| **Cute/Kawaii** | kawaii, adorable, soft colors, rounded features, whimsical, pastel tones, big sparkling eyes, soft lighting |
+| **Dramatic/Expressive** | dramatic, emotional, detailed linework, intense expression, dynamic pose, bold colors, high contrast, action lines |
+| **Scenic/Atmospheric** | cinematic, detailed background, environmental focus, scenic view, atmospheric, wide shot, golden hour lighting |
+| **Classic/Retro** | classic anime, retro anime, 80s/90s anime aesthetic, cel-shaded, traditional anime look |
+
+**How to use**:
+1. User picks aesthetic → you inject keywords seamlessly
+2. User never needs to know these keywords exist
+3. If user skips, infer from genre/artist (Sailor Moon → cute, Berserk → dramatic)

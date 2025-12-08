@@ -112,21 +112,6 @@ A Claude Code plugin that generates optimized anime and manga prompts for Midjou
 | `--oref` | Omni reference (V7) |
 | `--video` | Enable video generation (web app only) |
 
-> **Version Note**: Style modes (`--style cute`, `--style expressive`, `--style scenic`, `--style original`) are only available in **Niji 5**. Niji 6 uses default anime style or `--style raw`.
-
-## Style Aesthetic Keywords
-
-Since Niji 6 doesn't have style mode parameters, use these keywords in your prompts:
-
-| Aesthetic | Keywords to Include |
-|-----------|---------------------|
-| **Cute/Kawaii** | kawaii, adorable, chibi, soft colors, whimsical, pastel tones, big sparkling eyes |
-| **Expressive/Dramatic** | dramatic, emotional, intense expression, dynamic pose, bold colors, high contrast, action lines |
-| **Scenic/Environmental** | cinematic, detailed background, scenic view, atmospheric, landscape, golden hour lighting |
-| **Classic/Retro** | classic anime, retro anime, 80s anime, 90s anime, cel-shaded, traditional anime aesthetic |
-
-**Tip**: Niji 6 rewards longer, more descriptive prompts. Describe what you want in detail.
-
 ## SREF Code Library
 
 Curated SREF codes for consistent anime visual styles. See [docs/sref-library.md](./docs/sref-library.md) for full library.
@@ -160,36 +145,36 @@ Curated SREF codes for consistent anime visual styles. See [docs/sref-library.md
 --sref 3408846050::2 918084796::1
 ```
 
-## Example Outputs
+## What You Say → What You Get
 
-### Ghibli Style
+The plugin builds detailed prompts from simple inputs. Here's what that looks like:
+
+### Simple Request
+**You say**: "magical girl transformation, Sailor Moon style"
+**You get**:
 ```
-A young adventurer discovering a hidden forest spirit, Studio Ghibli style, Hayao Miyazaki, whimsical, enchanting, lush vegetation --niji 6 --ar 16:9 --s 500
+A magical girl mid-transformation with sparkles and ribbons spiraling around her, Sailor Moon style, Naoko Takeuchi, kawaii, adorable expression, big sparkling eyes, soft pastel colors, cosmic background --niji 6 --ar 9:16 --s 600
 ```
 
 ### Dark Fantasy
+**You say**: "warrior facing a demon, Berserk style"
+**You get**:
 ```
-A lone warrior facing a demon in a gothic cathedral, Berserk style, Kentaro Miura, dark fantasy, hyper-detailed linework --niji 6 --ar 2:3 --s 800
-```
-
-### Magical Girl (Cute Aesthetic)
-```
-A magical girl mid-transformation with sparkles and ribbons spiraling around her, Sailor Moon style, Naoko Takeuchi, magical girl genre, kawaii, adorable expression, big sparkling eyes, soft pastel colors, pink and lavender palette, cosmic starry background, dynamic graceful pose --niji 6 --ar 9:16 --s 600
+A lone warrior in black armor facing a massive demon in a gothic cathedral, Berserk style, Kentaro Miura, dark fantasy, dramatic, intense expression, hyper-detailed linework --niji 6 --ar 2:3 --s 800
 ```
 
-### With SREF Code (Scenic Aesthetic)
+### With Style Reference
+**You say**: "peaceful meadow scene, Ghibli style, add a matching SREF"
+**You get**:
 ```
-A young girl walking through a sunlit meadow filled with wildflowers swaying in the breeze, Studio Ghibli style, magical realism, cinematic wide shot, detailed scenic background, soft golden hour lighting, peaceful contemplative mood --niji 6 --ar 16:9 --sref 3408846050 --sw 300
+A young girl walking through a sunlit meadow filled with wildflowers, Studio Ghibli style, magical realism, cinematic, soft golden hour lighting --niji 6 --ar 16:9 --sref 3408846050 --sw 300
 ```
 
 ### Character Reference Sheet
+**You say**: "create a character sheet for my mage character"
+**You get**:
 ```
-character reference sheet, young female sorcerer with long silver hair and purple eyes, multiple views, front view, side view, three-quarter view, back view, clean white background, full body --niji 6 --ar 16:9
-```
-
-### Using Character Reference
-```
-A young sorcerer casting a powerful spell in an ancient magical forest, purple arcane energy swirling around raised hands, dramatic lighting from below, intense focused expression, mystical atmosphere --niji 6 --ar 16:9 --cref [URL] --cw 100
+character reference sheet, [your character description], multiple views, front view, side view, three-quarter view, back view, clean white background, full body --niji 6 --ar 16:9
 ```
 
 ## Character Consistency

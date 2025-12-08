@@ -91,19 +91,22 @@ Ask the user to describe:
 - Scene/Environment - setting, atmosphere
 - Action - what's happening
 
-### Step 4: Technical Options
+### Step 4: Aesthetic & Technical Options
 
-> **Note**: Niji 6 uses a default anime style. The only optional style is `--style raw` for less stylized, more literal output. Style modes like cute/expressive/scenic/original are only available in Niji 5.
-
-Ask about style preference:
+**First, ask about the desired aesthetic vibe:**
 ```
-Question: "Would you like to use raw mode for less stylized output?"
+Question: "What aesthetic vibe are you going for?"
 Options:
-- Default (standard Niji 6 anime aesthetic)
-- Raw (--style raw, less stylized, more literal to prompt)
+- Cute/Kawaii (adorable, soft, whimsical)
+- Dramatic/Expressive (intense, bold, dynamic)
+- Scenic/Atmospheric (cinematic, environmental focus)
+- Classic/Retro (80s/90s anime look)
+- Let the artist style guide it (skip - use genre/artist defaults)
 ```
 
-Ask about aspect ratio:
+Based on selection, you will automatically inject the appropriate aesthetic keywords when building the prompt. See **Internal Reference: Aesthetic Keywords** at the end of this document.
+
+**Then ask about aspect ratio:**
 ```
 Question: "What aspect ratio?"
 Options:
@@ -428,21 +431,6 @@ neon lights, rain, holographic displays, cybernetic, dystopian cityscape, night 
 | `--cw` | Character weight (0-100) |
 | `--video` | Enable video generation (web app only) |
 
-> **Version Note**: Style modes (`--style cute`, `--style expressive`, `--style scenic`, `--style original`) are only available in **Niji 5**. Niji 6 only supports default or `--style raw`.
-
-### Style Aesthetic Keywords
-
-Since Niji 6 doesn't have style mode parameters, use these keywords in your prompts to achieve similar effects:
-
-| Aesthetic | Keywords to Include |
-|-----------|---------------------|
-| **Cute/Kawaii** | kawaii, adorable, chibi, soft colors, rounded features, whimsical, playful, pastel tones, big sparkling eyes, soft lighting |
-| **Expressive/Dramatic** | dramatic, emotional, detailed linework, intense expression, dynamic pose, bold colors, high contrast, action lines, impact frame |
-| **Scenic/Environmental** | cinematic, detailed background, environmental focus, scenic view, atmospheric, landscape, wide shot, lush environment, golden hour lighting |
-| **Classic/Retro** | classic anime, retro anime, 80s anime, 90s anime, cel-shaded, traditional anime aesthetic, vintage anime |
-
-**Tip**: Niji 6 rewards longer, more descriptive prompts. Instead of relying on style parameters, describe exactly what you want to see.
-
 ### Video Parameters
 
 | Parameter | Description | Example |
@@ -502,106 +490,88 @@ Since Niji 6 doesn't have style mode parameters, use these keywords in your prom
 
 ---
 
-## Example Prompts
+## Example: What You Say → What You Get
 
-### Studio Ghibli Style
-```
-A young adventurer discovering a hidden forest spirit among ancient trees, Studio Ghibli style, Hayao Miyazaki, whimsical, enchanting, lush vegetation, soft dappled lighting, magical realism --niji 6 --ar 16:9 --s 500
-```
+These examples show simple user inputs and the prompts the plugin generates.
 
-### Cyberpunk (Otomo/Akira)
-```
-A courier on a futuristic motorcycle racing through neon-lit Neo Tokyo streets at night, Akira style, Katsuhiro Otomo, cyberpunk, rain reflections, intricate machinery, dystopian cityscape --niji 6 --ar 21:9 --s 750
-```
+### Magical Girl Transformation
 
-### Dark Fantasy (Miura/Berserk)
+**You say**: "magical girl transformation, Sailor Moon style"
+**You pick**: Shoujo genre, Naoko Takeuchi, Cute/Kawaii aesthetic, 9:16 portrait
+**You get**:
 ```
-A lone warrior in black armor facing a massive demon in a gothic cathedral, Berserk style, Kentaro Miura, dark fantasy, hyper-detailed linework, dramatic chiaroscuro lighting, atmospheric fog --niji 6 --ar 2:3 --s 800
+A magical girl mid-transformation with sparkles and ribbons spiraling around her, Sailor Moon style, Naoko Takeuchi, magical girl genre, kawaii, adorable expression, big sparkling eyes, soft pastel colors, cosmic starry background, dynamic graceful pose, soft glowing lighting --niji 6 --ar 9:16 --s 600
 ```
 
-### Magical Girl (Takeuchi) - Cute Aesthetic
+### Dark Fantasy Warrior
+
+**You say**: "warrior facing a demon in a cathedral"
+**You pick**: Seinen genre, Kentaro Miura, Dramatic/Expressive aesthetic, 2:3 portrait
+**You get**:
 ```
-A magical girl mid-transformation with sparkles and ribbons spiraling around her, Sailor Moon style, Naoko Takeuchi, magical girl genre, kawaii, adorable expression, big sparkling eyes, soft pastel colors, pink and lavender color palette, cosmic starry background, dynamic graceful pose, soft glowing lighting, whimsical atmosphere --niji 6 --ar 9:16 --s 600
+A lone warrior in black armor facing a massive demon in a gothic cathedral, Berserk style, Kentaro Miura, dark fantasy, dramatic, intense expression, hyper-detailed linework, bold high-contrast colors, atmospheric fog --niji 6 --ar 2:3 --s 800
 ```
 
-### JoJo Style (Araki) - Expressive Aesthetic
+### Peaceful School Scene
+
+**You say**: "girl looking out classroom window at cherry blossoms"
+**You pick**: Slice of Life genre, Kyoto Animation, Scenic/Atmospheric aesthetic, 16:9 widescreen
+**You get**:
 ```
-A stylish character in flamboyant haute couture clothing striking an exaggerated dramatic pose with menacing aura radiating outward, JoJo's Bizarre Adventure style, Hirohiko Araki, fashion-forward design, muscular physique, baroque ornate details, intense piercing expression, bold high-contrast colors, dynamic action lines, dramatic lighting from below --niji 6 --ar 3:4 --s 700
+A high school girl gazing wistfully out a classroom window at cherry blossoms drifting in the breeze, Kyoto Animation style, slice of life, cinematic, detailed scenic background, soft golden afternoon lighting, atmospheric, peaceful mood --niji 6 --ar 16:9 --s 400
 ```
 
-### Horror (Junji Ito)
+### Retro Space Pilot
+
+**You say**: "space pilot in cockpit, 80s anime style"
+**You pick**: Mecha genre, Leiji Matsumoto, Classic/Retro aesthetic, 4:3 classic
+**You get**:
 ```
-A figure encountering an impossible spiral staircase descending into darkness, Junji Ito style, horror manga, surreal, disturbing, intricate linework, psychological dread, uncanny --niji 6 --ar 2:3 --s 800
+A determined space pilot sitting in a vintage mechanical cockpit surrounded by analog displays and warning lights, 80s anime style, classic retro anime aesthetic, Leiji Matsumoto influence, space opera, cel-shaded, nostalgic warm color grading --niji 6 --ar 4:3 --s 500
 ```
 
-### Modern Shonen (MAPPA)
-```
-A sorcerer unleashing cursed energy in an explosive battle pose, Jujutsu Kaisen style, MAPPA studio, modern shonen, dynamic action, dark blue and purple energy effects, intense expression --niji 6 --ar 16:9 --s 600
-```
+### With Style Reference (SREF)
 
-### Slice of Life (Kyoto Animation) - Scenic Aesthetic
-```
-A high school girl in summer uniform gazing wistfully out a classroom window at cherry blossoms drifting in the breeze, Kyoto Animation style, slice of life genre, cinematic composition, detailed scenic background with desks and chalkboard, soft golden afternoon lighting streaming through window, highly detailed expressive eyes with light reflections, peaceful melancholic atmosphere, warm color palette --niji 6 --ar 16:9 --s 400
-```
-
-### Retro 80s Anime - Classic Aesthetic
-```
-A determined space pilot with flowing hair sitting in a vintage mechanical cockpit surrounded by analog displays, blinking warning lights, and radar screens, 80s anime style, classic retro anime aesthetic, Leiji Matsumoto influence, space opera genre, traditional cel-shaded look, subtle film grain texture, nostalgic warm color grading, stars visible through cockpit window --niji 6 --ar 4:3 --s 500
-```
-
-### With SREF Code (Ghibli Style)
+**You say**: "girl walking through meadow, Ghibli style, add a matching SREF"
+**You pick**: Ghibli/Soft SREF category
+**You get**:
 ```
 A young girl walking through a sunlit meadow filled with wildflowers, Studio Ghibli style, magical realism, soft lighting --niji 6 --ar 16:9 --sref 3408846050 --sw 300
 ```
 
-### With SREF Code (Dark Fantasy)
+### With Character Reference
+
+**You say**: "use my character reference for a mage casting a spell"
+**You provide**: Character reference URL
+**You get**:
 ```
-A knight standing before an ancient demon gate, dark fantasy, gothic atmosphere --niji 6 --ar 2:3 --sref 416523183 --sw 400
+A young mage casting a powerful spell in an ancient magical forest, arcane energy swirling, dramatic lighting, mystical atmosphere --niji 6 --ar 16:9 --cref [your URL] --cw 100
 ```
 
-### Character Reference Sheet (Multi-view)
+### Create Character Reference Sheet
+
+**You say**: "I want to create a character sheet for my mage character"
+**You describe**: "female mage with silver hair and purple eyes, dark cloak"
+**You pick**: Multi-view reference type
+**You get**:
 ```
 character reference sheet, young female mage with long silver hair and purple eyes wearing a dark cloak, multiple views, front view, side view, three-quarter view, back view, clean white background, full body, anime style --niji 6 --ar 16:9
 ```
 
-### Character Reference Sheet (Expressions)
+### Animate an Image
+
+**You say**: "animate this image with action movement"
+**You pick**: Action motion style, Dynamic camera, High intensity
+**You get**:
 ```
-expression sheet, young female mage with long silver hair and purple eyes, multiple expressions, happy, sad, angry, surprised, neutral, determined, head shots, clean white background --niji 6 --ar 16:9
+[Your Image URL] dynamic camera tracking, speed lines effect, impact frame, explosive movement, high motion --video
 ```
 
-### Using Character Reference (Full)
+**You say**: "make a peaceful loop animation"
+**You pick**: Slice-of-life motion, Static camera, Loop
+**You get**:
 ```
-A young mage casting a spell in a magical forest, purple energy swirling, dramatic lighting --niji 6 --ar 16:9 --cref https://cdn.discordapp.com/attachments/... --cw 100
-```
-
-### Using Character Reference (Outfit Change)
-```
-A young mage in casual modern clothes at a coffee shop, relaxed pose, slice of life --niji 6 --ar 16:9 --cref https://cdn.discordapp.com/attachments/... --cw 50
-```
-
-### Animation - Action Scene
-```
-[Image URL] dynamic camera tracking, speed lines effect, impact frame, explosive movement, high motion --video
-```
-
-### Animation - Peaceful Moment
-```
-[Image URL] gentle breeze through hair, soft fabric movement, peaceful atmosphere, low motion --video --raw
-```
-
-### Animation - Dramatic Zoom
-```
-[Image URL] slow cinematic zoom to face, emotional intensity, dramatic lighting, medium motion --video
-```
-
-### Animation - Seamless Loop
-```
-[Image URL] seamless loop, hair gently swaying, soft breathing motion, subtle --video loop --raw
-```
-
-### Animation - Combat
-```
-[Image URL] fast motion blur, impact frame, explosive energy, dynamic camera shake --video
+[Your Image URL] seamless loop, gentle breeze, hair gently swaying, soft breathing motion, subtle --video loop --raw
 ```
 
 ---
@@ -610,13 +580,30 @@ A young mage in casual modern clothes at a coffee shop, relaxed pose, slice of l
 
 1. **Always use --niji 6** for anime art
 2. **Front-load artist/studio names** - they have strong influence
-3. **Use `--style raw` when needed**: For less stylized, more literal output (otherwise Niji 6 uses default anime style)
-   - Note: Style modes (cute/expressive/scenic/original) require Niji 5
-4. **Use descriptive prompts** - Niji 6 rewards longer, more specific prompts that explain what you want
-5. **Use aesthetic keywords** - Include style keywords (kawaii, dramatic, cinematic, etc.) to achieve desired look
-6. **Stylize values**:
+3. **Inject aesthetic keywords automatically** - based on user's aesthetic selection in Step 4
+4. **Stylize values**:
    - 100-300: Faithful to prompt
    - 400-600: Balanced
    - 700-1000: More artistic interpretation
 
 Now, let's create your anime art! What would you like to make?
+
+---
+
+## Internal Reference: Aesthetic Keywords
+
+> **Note**: This section is for the AI to reference when building prompts. Do not show this table to users - instead, ask them to select an aesthetic vibe in Step 4, then automatically inject these keywords.
+
+When the user selects an aesthetic vibe, include these keywords in the generated prompt:
+
+| User Selection | Keywords to Inject |
+|----------------|-------------------|
+| **Cute/Kawaii** | kawaii, adorable, soft colors, rounded features, whimsical, pastel tones, big sparkling eyes, soft lighting |
+| **Dramatic/Expressive** | dramatic, emotional, detailed linework, intense expression, dynamic pose, bold colors, high contrast, action lines |
+| **Scenic/Atmospheric** | cinematic, detailed background, environmental focus, scenic view, atmospheric, wide shot, golden hour lighting |
+| **Classic/Retro** | classic anime, retro anime, 80s/90s anime aesthetic, cel-shaded, traditional anime look |
+
+**How to use**:
+1. User picks aesthetic → you inject keywords seamlessly into the prompt
+2. User never needs to know these keywords exist
+3. If user skips aesthetic selection, infer from genre/artist (e.g., Sailor Moon → cute, Berserk → dramatic)
