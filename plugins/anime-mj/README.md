@@ -247,7 +247,6 @@ Animate your anime images using Midjourney's V1 video model. See [docs/video-ani
 
 - [SREF Code Library](./docs/sref-library.md) - Full curated library with 40+ anime style codes
 - [Video/Animation Guide](./docs/video-animation.md) - Complete animation reference
-- [Reference Index](./docs/README.md) - Documentation index
 
 ## External Resources
 
